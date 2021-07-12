@@ -1,0 +1,237 @@
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/main]
+bottom = true
+width = 100%
+height = 20
+#radius = 6.0
+
+# Зафиксированый центр или динамический
+fixed-center = false
+
+# локаль панели отвечает за вывод некот. данных, напр. дата
+locale = ru_RU.UTF-8
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+# размер нажней линии под модулями
+line-size = 2
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+# отступы содержимого панели от края
+padding-left = 0
+padding-right = 0
+
+# отступы между модулями
+module-margin-left = 1
+module-margin-right = 1
+
+
+# Шрифты
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+#font-3 = Material Icons:style=Regular
+#font-4 = FontAwesome 5 Free:size=10:style=Solid;3
+
+#------------------------------------------------------
+# Расположение и активация модулей
+#------------------------------------------------------
+modules-left = i3 menu updates-pacman-aurhelper
+modules-center = title
+modules-right = cpu temperature_core2 temperature_core3 memory filesystem pulseaudio date
+
+# системный лоток расположение tray иконок none|right|center|left
+tray-detached = false
+tray-position = right
+tray-offset-x = 0
+tray-offset-y = 0
+tray-maxsize = 16
+tray-padding = 2
+tray-scale = 1
+
+
+#------------------------------------------------------
+# Подключенные модули
+#------------------------------------------------------
+[module/i3]
+type = internal/i3
+
+format = <label-state><label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 1
+
+label-focused = %icon%
+label-focused-padding = 1
+label-focused-underline = ${colors.foreground}
+
+label-unfocused = %icon%
+label-unfocused-padding = 1
+
+label-urgent = %icon%
+label-urgent-padding = 1
+
+label-visible = %icon%
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.foreground}
+label-visible-padding = 1
+
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;9
+ws-icon-9 = 10;10
+
+#------------------------------------------------------
+[module/menu]
+type = custom/menu
+format-spacing = 2
+label-open = ☰
+label-close = X 
+format-padding = 1
+label-separator = |
+
+# меню
+menu-0-0 = ⚓
+menu-0-0-exec = mousepad ~/Documents/notes/passwords.txt
+
+menu-0-1 = ≋
+menu-0-1-exec = evince
+
+menu-0-2 = ÷
+menu-0-2-exec = galculator
+
+#------------------------------------------------------
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
+interval = 600
+
+#------------------------------------------------------
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+mount-1 = /home
+
+label-mounted = %mountpoint%: %free%
+#label-unmounted = %mountpoint% not mounted
+#label-unmounted-foreground = ${colors.foreground-alt}
+#label-unmounted-underline = #ff0000
+#label-mounted-underline = #c38611
+
+#------------------------------------------------------
+
+[settings]
+#Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+#------------------------------------------------------
+#Requires polybar to be built with xcursor support (xcb-util-cursor)
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+#Currently supported WM's
+#wm-restack = bspwm
+wm-restack = i3
+#------------------------------------------------------
+# Модуль заглавия окна 
+[module/title]
+type = internal/xwindow
+label = %{colors.foreground}%title:0:50:...%
+
+#------------------------------------------------------
+# Модуль загрузки процессора 
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = CPU:%percentage%% 
+
+#------------------------------------------------------
+# Модуль температуры процессора
+[module/temperature_core3]
+type = internal/temperature
+thermal-zone = 0
+# при достижении критической отметки модуль меняет цвет на тот который мы зададим в label-warn
+warn-temperature = 65
+#путь к файлу отвечающему за температуру ядра
+hwmon-path = /sys/class/thermal/thermal_zone0/temp
+label = t:%temperature-c%
+label-warn = t:%temperature-c%
+label-warn-foreground = #CA4E4E
+interval = 10
+
+
+#------------------------------------------------------
+# Модуль ОЗУ
+[module/memory]
+type = internal/memory
+interval = 2
+label =  MEM:%percentage_used%%
+
+
+#------------------------------------------------------
+# Модуль управления звуком
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume> 
+label-volume = Vol:%percentage%%
+label-volume-foreground = ${root.foreground}
+label-muted-foreground = #e8793e
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+
+#------------------------------------------------------
+#Модуль раскладки клавиатуры
+#https://github.com/polybar/polybar/wiki/Module:-xkeyboard
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+#------------------------------------------------------
+#Модуль календарь
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/scripts/popup-calendar.sh
+interval = 5
+click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup &
+#------------------------------------------------------
+
+# Модуль даты/времени
+[module/date]
+type = internal/date
+interval = 1.0
+time = %a, %d %b  %H:%M
+format-prefix-foregrounds = ${colors.foreground-alt}
+label = |  %time%  |
+format = %{A1:zenity --calendar:} <label> %{A}

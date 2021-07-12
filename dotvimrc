@@ -1,0 +1,212 @@
+"Plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+"colorschemes
+Plug 'morhetz/gruvbox'
+
+"Autoclose quotes and 
+Plug 'jiangmiao/auto-pairs'
+
+"Git pluggins
+Plug 'airblade/vim-gitgutter'
+
+"Search files in project by name
+Plug 'kien/ctrlp.vim'
+
+"Search files in project by piece of text
+Plug 'rking/ag.vim'
+
+" Плагин для поддержки кириллицы
+Plug 'lyokha/vim-xkbswitch'
+
+"Motion by file
+Plug 'easymotion/vim-easymotion'
+
+"Status bar
+Plug 'vim-airline/vim-airline'
+
+"Emmet
+Plug 'mattn/emmet-vim'
+
+call plug#end()
+
+
+" --------------------------------------------
+" Settings
+" --------------------------------------------
+" Включаем 256 цветов в терминале
+set t_Co=256
+set termencoding=utf-8 "Кодировка терминала
+
+syntax on
+set number
+set relativenumber
+set tabstop=4
+set shiftwidth=2
+"set smarttab
+set expandtab "Ставим табы пробелами
+" Вырубаем черточки на табах
+set showtabline=1
+" Автоотступ
+set autoindent
+" Переносим на другую строчку, разрываем строки
+set wrap
+set linebreak
+"Подсветка синтаксиса
+set hlsearch
+"Инкрементный поиск
+set incsearch
+" Игнорировать регистр при поиске
+set ignorecase
+
+" Включить подсветку строки с курсором
+"set cursorline
+
+set mousehide "Спрятать курсор мыши когда набираем текст
+set mouse=a "Включить поддержку мыши
+
+" Удобное поведение backspace
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+
+" Вырубаем .swp и ~ (резервные) файлы
+set nobackup
+set noswapfile
+
+set encoding=utf-8 " Кодировка файлов по умолчанию
+set fileencodings=utf8,cp1251
+
+"Интерпретация чисел ведущим нулем как десятичные
+set nrformats=
+
+set clipboard=unnamed
+set textwidth=80
+set ruler
+
+" Чтобы переключаться между буферами без сохранения
+set hidden
+
+" Выключаем звук в Vim
+set visualbell t_vb=
+"set novisualbell "Не мигать 
+
+" Понижаем задержку ввода escape последовательносей
+set ttimeoutlen=10
+
+" Увеличить кол-во последних запоминаемых команд
+set history=200
+
+" Подсвечиваем все что можно подсвечивать
+let python_highlight_all = 1
+
+set omnifunc=pythoncomplete#CompletePython
+
+" Перед сохранением вырезаем пробелы на концах (только в .py файлах)
+autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+" В .py файлах включаем умные отступы после ключевых слов
+autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+
+" -----------------------------------------
+" Plugins
+" -----------------------------------------
+
+" gruvbox
+"Theme settings
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+set background=dark
+
+" xkb-switch  
+" Поддержка команд на русском языке
+let g:XkbSwitchEnabled = 1
+"let g:XkbSwitchIMappings = ['ru']
+let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
+
+
+"Настройка airline плагина
+"let g:airline_powerline_fonts = 1 "Включить поддержку Powerline шрифтов
+let g:airline_section_z = "Line:%l/%L Col:%c" "Кастомная графа положения курсора
+
+
+"====================================
+"mappings
+"====================================
+"для работы с буфером обмена
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+" -------------------------------------------------------
+"переназначение перемещения между фактической и экранной строкой
+"nnoremap k gk
+"nnoremap gk k
+"nnoremap j gj
+"nnoremap gj j
+nnoremap 0 g0
+nnoremap g0 0
+nnoremap ^ g^
+nnoremap g^ ^
+nnoremap $ g$
+nnoremap g$ $
+" -------------------------------------------------------
+" При введение %% в командной стр подставится путь к файлу
+cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
+
+" -------------------------------------------------------
+"Изменение <Leader> с \ на ,
+let mapleader=","
+
+" -------------------------------------------------------
+"Изменение \ на , (для поиска в симв. в обр. напр.)
+noremap \ ,
+
+" -------------------------------------------------------
+"NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" -------------------------------------------------------
+"Easy Motion
+"Включть hotkeys
+map <Leader> <Plug>(easymotion-prefix)
+"Переназначение <Leader>s на <Leader>a
+map <Leader>a <Plug>(easymotion-F)
+
+
+" --------------------------------------------
+" Other
+" --------------------------------------------
+
+" Форма курсора
+" 1 - мигающий прямоугольник
+" 2 - обычный прямоугольник
+" 3 - мигающее подчеркивание
+" 4 - просто подчеркивание
+" 5 - мигающая вертикальная черта
+" 6 - просто вертикальная черта
+let &t_SI.="\e[1 q" "SI = режим вставки
+let &t_SR.="\e[3 q" "SR = режим замены
+let &t_EI.="\e[2 q" "EI = нормальный режим
+
+"Настройка перемещения между окнами
+"использование <C-j> и т.д. вместо <C-w>j
+"Moving beetween windows
+"map <silent> <C-j> :call WinMove('j')<CR>
+"map <silent> <C-h> :call WinMove('h')<CR>
+"map <silent> <C-k> :call WinMove('k')<CR>
+"map <silent> <C-l> :call WinMove('l')<CR>
+"
+""Function for moving beetween windows
+"function! WinMove(key)
+"  let t:curwin = winnr()
+"  exec "wincmd ".a:key
+"  if (t:curwin == winnr())
+"    if (match(a:key,'[jk]'))
+"      wincmd v
+"    else
+"      wincmd s
+"    endif
+"    exec "wincmd ".a:key
+"  endif
+"endfunction

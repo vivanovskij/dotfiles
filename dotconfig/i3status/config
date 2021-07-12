@@ -1,0 +1,81 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+  output_format = "i3bar"
+  markup = pango
+  colors = true
+  color_good = "#24B396"
+  color_degraded = "#FFD631"
+  color_bad = "#DD5B7E"
+  interval = 2 
+}
+
+#order += "disk /"
+#order += "disk /home"
+order += "cpu_temperature 0"
+order += "cpu_usage"
+order += "memory"
+order += "volume master"
+#order += "wireless _first_"
+order += "tztime local"
+
+
+
+disk "/" {
+        format = " /: %free "
+}
+disk "/home" {
+        format = " /home: %free "
+        #separator = true
+        #separator_block_width = 0
+}
+
+cpu_temperature 0 {
+        format = " TEM:%degrees°C "
+         path = "/sys/class/thermal/thermal_zone0/temp"
+}
+
+cpu_usage {
+        format = " CPU: %usage "
+}
+
+# миниторинг оперативной памяти
+#memory {
+    # доступные переменные:
+    # %total, percentage_total
+    # %used, percentage_used
+    # %free, percentage_free
+    # %available, percentage_available
+    # %shared, percentage_shared
+    #format = "%used"
+
+    # порог, при котором вывод окрасится в
+    # желтый (degraded) или красный (critical)
+    # а формат вывода изменится на format_degraded
+    #threshold_degraded = "500M"
+    #threshold_critical = "200M"
+    #format_degraded = "MEMORY < %available"
+#}
+
+
+volume master {
+        format = " Vol:%volume "
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+        #separator = true
+        #separator_block_width = 0
+}
+
+tztime local {
+	format = " %time "
+        format_time = "%a %-d %b %H:%M"
+        
+}
+

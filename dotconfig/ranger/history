@@ -1,0 +1,50 @@
+filter rc
+filter Xre
+find 
+find 0
+rename perl-rename_man
+rename Командная строка Linux. Полное руководство. Уильям Шоттс.pdf
+open_with%space
+open_with libre
+search bash
+search pol
+find xk
+find po
+set number
+set relativenumber
+open_with%spacer
+touch test
+filter  
+my_edit
+my_edit 
+copy_to_bookmark(b)
+copy_to_bookmark 
+copy_to_bookmark n
+copy_to_bookmark t
+uncut 
+uncut
+find to
+search dev
+mkdir my_files
+rename kilobyter
+unmark
+mkdir 1996
+find pa
+rename ТСГ-1_Новопсков_01.xls
+rename ТСГ-1_Новопсков_01_03_2000.xls
+mkdir 2000
+deletey
+rename 1996
+rename ТСГ-1_Новопсков_01_05_2000.xls
+mkdir tmp
+find tm
+touch testenv.py
+
+find p
+delete
+find ss
+shell CD 
+cd home
+cd  /home
+open_with 
+open_with vim
