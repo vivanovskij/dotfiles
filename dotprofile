@@ -1,0 +1,23 @@
+#
+# ~/.profile
+
+# Profile file. Runs on login
+
+# Переменные окружения
+# ----------------------------------
+export PATH="$PATH:$HOME/.scripts"
+export EDITOR="vim"
+export READER="evince"
+# Игнорировать дубликаты в истории команд
+export HISTCONTROL=ignoredups
+# Кол-во команд в истории
+export HISTSIZE=1000
+# Разрешение экрана
+export WIDTH=1280
+export HEIGHT=800
+
+[ -f ~/.bashrc  ] && source ~/.bashrc
+
+# Переназначить CapsLock на Ctrl в tty:
+sudo -n loadkeys ~/.scripts/ttymaps.kmap 2>/dev/null
+# wal -Rn >/dev/null

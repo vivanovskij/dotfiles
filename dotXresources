@@ -1,0 +1,37 @@
+! Locale
+URxvt.imLocale: ru_RU.UTF-8
+! Убрать скроллбар
+URxvt.scrollBar: false
+
+!-------------------------------
+! Настройка шрифта
+!-------------------------------
+URxvt.font: xft:monaco:size=12
+URxvt.boldFont:
+URxvt.letterSpace: -1
+URxvt.perl-ext-common:  ...,resize-font,...
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+! Цвет шрифта
+URxvt*foreground: white
+! Background color
+URxvt*background: black
+
+!-------------------------------
+! Убирать курсор мыши 
+URxvt.pointerBlank: true
+! Через 1 секунду
+URxvt.pointerBlankDelay: 1
+
+!-------------------------------
+! Мигание текстового курсора
+URxvt.cursorBlink: false
+
+!-------------------------------
+! Set background image
+! URxvt.background-expr: scale keep { load "/home/kilobyter/Pictures/wallpapers/arch/arch_02.png" }
+
+!-------------------------------
+! Прозрачность
+!URxvt*transparent: true
+!URxvt*shading: 30
