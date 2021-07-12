@@ -1,0 +1,76 @@
+xkb_keymap {
+	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
+	xkb_types     { include "complete"	};
+	xkb_compat    { include "complete"	};
+	//xkb_symbols   { include "pc+us+ru:2+inet(evdev)+group(alt_space_toggle)+group(alt_shift_toggle)"	};
+	xkb_geometry  { include "pc(pc105)"	};
+
+	xkb_symbols "my" {
+	include "pc+us+ru:2+inet(evdev)+group(alt_space_toggle)"
+	
+	// Определение раскладок
+	name[group1] = "English (US)";
+	name[group2] = "Russian";
+	
+	// Переключение раскладки
+	//key <RALT> { [ ISO_First_Group, ISO_Last_Group ] };
+	
+	// Переназначение клавиш ESC и CAPS
+	key <CAPS> { [ Escape ] };
+   	key <ESC>  { [ Caps_Lock ] };
+
+	// меняем местами : на ;
+	key <AC10> { [ colon, semicolon ] };
+	
+	// меняем ~ на `	
+    	key <TLDE> { [ asciitilde, grave ] };
+
+	//Натройка клавиши модификатора 	
+	key <LALT> { [ ISO_Level3_Shift ] };
+	key <RALT> { [ ISO_Level3_Shift ] };
+	
+	//Наcтройка перемещения
+	key <AC07> { symbols[group1] = [ j, J, KP_Left  ],
+		symbols[group2] = [Cyrillic_o, Cyrillic_O, KP_Left] };
+	key <AC08> { symbols[group1] = [ k, K, KP_Down  ],
+		symbols[group2] = [ Cyrillic_el, Cyrillic_EL, KP_Down ] };
+	key <AD08> { symbols[group1] = [ i, I, KP_Up ],
+		symbols[group2] = [ Cyrillic_sha, Cyrillic_SHA, KP_Up ] };
+	key <AC09> { symbols[group1] = [ l, L, KP_Right ],
+		 symbols[group2] = [ Cyrillic_de, Cyrillic_DE, KP_Right ] };
+
+	//Удаление
+	
+	key <AC03> { symbols[group1] = [ d, D, BackSpace ],
+		symbols[group2] = [ Cyrillic_ve, Cyrillic_VE, BackSpace ] };
+	key <AC04> { symbols[group1] = [ f, F, Delete ],
+		symbols[group2] = [ Cyrillic_a, Cyrillic_A, Delete ] };
+
+	// Одинаковые символы в разных раскладках
+	key <AD11> {
+	type[group2]="FOUR_LEVEL",
+	symbols[group2]=[Cyrillic_ha, Cyrillic_HA, bracketleft, braceleft]
+	};
+	key <AD12> {
+	type[group2]="FOUR_LEVEL",
+	symbols[group2]=[Cyrillic_hardsign, Cyrillic_HARDSIGN, bracketright, braceright]
+	};
+	key <AC10> {
+	type[group2]="FOUR_LEVEL",
+	symbols[group2]=[Cyrillic_zhe, Cyrillic_ZHE, colon, semicolon]
+	};
+	key <AC11> {
+	type[group2]="FOUR_LEVEL",
+	symbols[group2]=[Cyrillic_e, Cyrillic_E, apostrophe, quotedbl]
+	};
+	key <AB08> {
+	type[group2]="FOUR_LEVEL",
+	symbols[group2]=[Cyrillic_be, Cyrillic_BE, comma, less]
+	};
+	key <AB09> {
+	type[group2]="FOUR_LEVEL",
+	symbols[group2]=[Cyrillic_yu, Cyrillic_YU, period, greater]
+	};
+
+	};
+};
