@@ -24,7 +24,7 @@ font -misc-fixed-medium-r-normal-*-12-*-*-*-*-*-iso10646-*
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50% && $refresh_i3status
 
 # screensaver
-exec --no-startup-id xscreensaver --no-splash
+exec --no-startup-id xscreensaver
 
 #Загрузка моей конфигурации клавиатуры
 exec --no-startup-id source $HOME/.scripts/xkb
