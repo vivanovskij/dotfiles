@@ -128,7 +128,8 @@ let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
 "Переключение раскладки с помоьщью <C-l>
 imap <C-l> <C-^>
 "Для командного режима
-nmap <silent> <C-l> <C-^>
+cmap <silent> <C-l> <C-^>
+
 "для работы с буфером обмена
 noremap <Leader>y "*y
 noremap <Leader>p "*p
