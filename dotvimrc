@@ -24,9 +24,6 @@ Plug 'lyokha/vim-xkbswitch'
 "Motion by file
 Plug 'easymotion/vim-easymotion'
 
-"Status bar
-Plug 'vim-airline/vim-airline'
-
 "Emmet
 Plug 'mattn/emmet-vim'
 
@@ -40,32 +37,35 @@ call plug#end()
 set t_Co=256
 set termencoding=utf-8 "Кодировка терминала
 
+" Определение раскладок
+set keymap=russian-jcukenwin
+
 syntax on
+
 set number
 set relativenumber
+
 set tabstop=4
-set shiftwidth=2
+set shiftwidth=4
 "set smarttab
-set expandtab "Ставим табы пробелами
+
+"Ставим табы пробелами
+set expandtab
 " Вырубаем черточки на табах
 set showtabline=1
 " Автоотступ
 set autoindent
+
 " Переносим на другую строчку, разрываем строки
 set wrap
 set linebreak
+
 "Подсветка синтаксиса
 set hlsearch
 "Инкрементный поиск
 set incsearch
 " Игнорировать регистр при поиске
 set ignorecase
-
-" Включить подсветку строки с курсором
-"set cursorline
-
-set mousehide "Спрятать курсор мыши когда набираем текст
-set mouse=a "Включить поддержку мыши
 
 " Удобное поведение backspace
 set backspace=indent,eol,start whichwrap+=<,>,[,]
@@ -74,7 +74,8 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 set nobackup
 set noswapfile
 
-set encoding=utf-8 " Кодировка файлов по умолчанию
+" Кодировка файлов по умолчанию
+set encoding=utf-8
 set fileencodings=utf8,cp1251
 
 "Интерпретация чисел ведущим нулем как десятичные
@@ -86,10 +87,6 @@ set ruler
 
 " Чтобы переключаться между буферами без сохранения
 set hidden
-
-" Выключаем звук в Vim
-set visualbell t_vb=
-"set novisualbell "Не мигать 
 
 " Понижаем задержку ввода escape последовательносей
 set ttimeoutlen=10
@@ -124,15 +121,14 @@ let g:XkbSwitchEnabled = 1
 "let g:XkbSwitchIMappings = ['ru']
 let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
 
-
-"Настройка airline плагина
-"let g:airline_powerline_fonts = 1 "Включить поддержку Powerline шрифтов
-let g:airline_section_z = "Line:%l/%L Col:%c" "Кастомная графа положения курсора
-
-
 "====================================
 "mappings
 "====================================
+
+"Переключение раскладки с помоьщью <C-l>
+imap <C-l> <C-^>
+"Для командного режима
+nmap <silent> <C-l> <C-^>
 "для работы с буфером обмена
 noremap <Leader>y "*y
 noremap <Leader>p "*p
