@@ -504,17 +504,25 @@ nnoremap <c-u> <c-w>x
 "
 " let $VIFM_SERVER_NAME = v:servername
 
+
 "============================================
 " My settings
 "============================================
+
 set number
 set relativenumber
 
+
+---------------------------------------------
 " Mappings
-----------
+---------------------------------------------
+" Создание файла %-том
 nnoremap % :touch<space>
  
 " Open current directory in the other pane
 nnoremap <c-i> :sync<cr>
 " Open directory under cursor in the other pane
 nnoremap <c-o> :sync %c<cr>
+
+" Переименование файла (без разрешения)
+nnoremap a cW

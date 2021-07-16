@@ -6,6 +6,7 @@
 # Переменные окружения
 # ----------------------------------
 export PATH="$PATH:$HOME/.scripts"
+export TERMCMD="urxvt"
 export EDITOR="vim"
 export READER="evince"
 # Игнорировать дубликаты в истории команд
