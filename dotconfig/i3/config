@@ -45,6 +45,7 @@ exec --no-startup-id chromium
 # ============= Запуск программ =================
 
 bindsym $mod+F1 exec --no-startup-id chromium
+bindsym $mod+F4 exec --no-startup-id vlc
 
 bindsym $mod+F5 exec --no-startup-id mousepad
 bindsym $mod+F6 exec --no-startup-id libreoffice
@@ -60,6 +61,7 @@ bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 # ======== Specific workspaces ================
 
 assign [window_role="browser"] $ws1
+assign [class="(?i)vlc"] $ws4
 assign [title="(?i)libreoffice"] $ws6
 assign [class="(?i)evince"] $ws8
 assign [class="(?i)thunar"] $ws9
