@@ -28,16 +28,17 @@ alias l.='ls -d .* --color=auto' # Вывод каталогов, начинаю
 # ----------------------------------
 
 alias sc='sudo systemctl'
+alias p='sudo pacman'
+alias psgrep='ps aux | grep'
 alias prename='perl-rename' # Утилита для переименования нескольких файлов
 alias r='ranger'
 alias sr='sudo ranger'
-alias p='sudo pacman'
-alias psgrep='ps aux | grep'
-alias v='vim'
-alias sv='sudo vim'
+alias v='vifm'
+alias sv='sudo vifm'
 alias mkd='mkdir -pv'
 
 # Internet
 # ----------------------------------
 alias yt='youtube-dl --add-metadata -ic'  # Download video link
 alias yta='youtube-dl --add-metadata -xic'  # Download only audio
+
