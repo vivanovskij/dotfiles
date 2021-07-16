@@ -2,30 +2,21 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
 "colorschemes
 Plug 'morhetz/gruvbox'
-
 "Autoclose quotes and 
 Plug 'jiangmiao/auto-pairs'
-
 "Git pluggins
 Plug 'airblade/vim-gitgutter'
-
 "Search files in project by name
 Plug 'kien/ctrlp.vim'
-
 "Search files in project by piece of text
-Plug 'rking/ag.vim'
-
-" Плагин для поддержки кириллицы
+"Plug 'rking/ag.vim'
 Plug 'lyokha/vim-xkbswitch'
-
-"Motion by file
 Plug 'easymotion/vim-easymotion'
-
-"Emmet
 Plug 'mattn/emmet-vim'
+Plug 'vifm/vifm.vim'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -37,8 +28,10 @@ call plug#end()
 set t_Co=256
 set termencoding=utf-8 "Кодировка терминала
 
-" Определение раскладок
+" Определение русской раскладки
 set keymap=russian-jcukenwin
+" При запуске vim использовать en раскладку
+set iminsert=0
 
 syntax on
 
@@ -60,8 +53,8 @@ set autoindent
 set wrap
 set linebreak
 
-"Подсветка синтаксиса
-set hlsearch
+" Не подсвечивать результаты поиска
+set nohlsearch
 "Инкрементный поиск
 set incsearch
 " Игнорировать регистр при поиске
@@ -137,10 +130,6 @@ noremap <Leader>Y "+y
 noremap <Leader>P "+p
 " -------------------------------------------------------
 "переназначение перемещения между фактической и экранной строкой
-"nnoremap k gk
-"nnoremap gk k
-"nnoremap j gj
-"nnoremap gj j
 nnoremap 0 g0
 nnoremap g0 0
 nnoremap ^ g^
@@ -170,6 +159,31 @@ map <Leader> <Plug>(easymotion-prefix)
 "Переназначение <Leader>s на <Leader>a
 map <Leader>a <Plug>(easymotion-F)
 
+" --------------------------------------------
+" Vifm
+map <Leader>vv :Vifm<CR>
+
+" --------------------------------------------
+" Lightline
+set laststatus=2
+set noshowmode
+
+"Функция для отображения раскладки
+function! LightLineKeymap()
+    let km = &iminsert == 0 ? 'en' : 'ru'
+    return km
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'keymap', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \     'keymap': 'LightLineKeymap',
+      \ }, 
+      \ }
 
 " --------------------------------------------
 " Other
@@ -186,24 +200,3 @@ let &t_SI.="\e[1 q" "SI = режим вставки
 let &t_SR.="\e[3 q" "SR = режим замены
 let &t_EI.="\e[2 q" "EI = нормальный режим
 
-"Настройка перемещения между окнами
-"использование <C-j> и т.д. вместо <C-w>j
-"Moving beetween windows
-"map <silent> <C-j> :call WinMove('j')<CR>
-"map <silent> <C-h> :call WinMove('h')<CR>
-"map <silent> <C-k> :call WinMove('k')<CR>
-"map <silent> <C-l> :call WinMove('l')<CR>
-"
-""Function for moving beetween windows
-"function! WinMove(key)
-"  let t:curwin = winnr()
-"  exec "wincmd ".a:key
-"  if (t:curwin == winnr())
-"    if (match(a:key,'[jk]'))
-"      wincmd v
-"    else
-"      wincmd s
-"    endif
-"    exec "wincmd ".a:key
-"  endif
-"endfunction
