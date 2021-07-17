@@ -8,7 +8,7 @@ Plug 'jiangmiao/auto-pairs'
 "Git pluggins
 Plug 'airblade/vim-gitgutter'
 "Search files in project by name
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 "Search files in project by piece of text
 "Plug 'rking/ag.vim'
 Plug 'lyokha/vim-xkbswitch'
@@ -48,6 +48,8 @@ set expandtab
 set showtabline=1
 " Автоотступ
 set autoindent
+" Отключить автокомментарий
+set formatoptions-=cro
 
 " Переносим на другую строчку, разрываем строки
 set wrap

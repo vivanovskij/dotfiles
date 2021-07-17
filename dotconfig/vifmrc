@@ -526,3 +526,6 @@ nnoremap <a-i> :sync %c<cr>
 
 " Переименование файла (без разрешения)
 nnoremap a cW
+
+" Отображение скрытых файлов
+nnoremap <c-h> za
