@@ -520,9 +520,9 @@ set relativenumber
 nnoremap % :touch<space>
  
 " Open current directory in the other pane
-nnoremap <c-i> :sync<cr>
+"nnoremap <a-o> :sync<cr>
 " Open directory under cursor in the other pane
-nnoremap <c-o> :sync %c<cr>
+nnoremap <a-i> :sync %c<cr>
 
 " Переименование файла (без разрешения)
 nnoremap a cW

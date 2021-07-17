@@ -1,7 +1,6 @@
 "Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "colorschemes
 Plug 'morhetz/gruvbox'
 "Autoclose quotes and 
@@ -17,6 +16,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mattn/emmet-vim'
 Plug 'vifm/vifm.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -149,10 +149,6 @@ let mapleader=","
 noremap \ ,
 
 " -------------------------------------------------------
-"NERDTree
-map <C-n> :NERDTreeToggle<CR>
-
-" -------------------------------------------------------
 "Easy Motion
 "Включть hotkeys
 map <Leader> <Plug>(easymotion-prefix)
@@ -162,6 +158,10 @@ map <Leader>a <Plug>(easymotion-F)
 " --------------------------------------------
 " Vifm
 map <Leader>vv :Vifm<CR>
+map <Leader>vs :VsplitVifm<CR>
+map <Leader>vh :SplitVifm<CR>
+map <Leader>vt :TabVifm<CR>
+map <Leader>vd :DiffVifm<CR>
 
 " --------------------------------------------
 " Lightline
@@ -185,6 +185,9 @@ let g:lightline = {
       \ }, 
       \ }
 
+let g:lightline.tabline = {
+    \ 'left': [ [ 'tabs' ] ],
+    \ 'right': [ [] ]}
 " --------------------------------------------
 " Other
 " --------------------------------------------
