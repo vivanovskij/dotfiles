@@ -27,11 +27,3 @@ URxvt.pointerBlankDelay: 1
 ! Мигание текстового курсора
 URxvt.cursorBlink: false
 
-!-------------------------------
-! Set background image
-! URxvt.background-expr: scale keep { load "/home/kilobyter/Pictures/wallpapers/arch/arch_02.png" }
-
-!-------------------------------
-! Прозрачность
-!URxvt*transparent: true
-!URxvt*shading: 30

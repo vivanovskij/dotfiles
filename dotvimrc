@@ -7,10 +7,6 @@ Plug 'morhetz/gruvbox'
 Plug 'jiangmiao/auto-pairs'
 "Git pluggins
 Plug 'airblade/vim-gitgutter'
-"Search files in project by name
-"Plug 'kien/ctrlp.vim'
-"Search files in project by piece of text
-"Plug 'rking/ag.vim'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'easymotion/vim-easymotion'
 Plug 'mattn/emmet-vim'
@@ -34,6 +30,9 @@ set keymap=russian-jcukenwin
 set iminsert=0
 
 syntax on
+
+"Поддержка мыши
+set mouse=a
 
 set number
 set relativenumber
@@ -82,6 +81,11 @@ set ruler
 
 " Чтобы переключаться между буферами без сохранения
 set hidden
+
+" Не выводить сообщения об ошибке при попытке закрыть(удалить) буфер с
+" не сохраненными изменениями. Вместо ошибки будет появляться подтверждение
+" закрытия не сохраненного файла.
+set confirm
 
 " Понижаем задержку ввода escape последовательносей
 set ttimeoutlen=10
