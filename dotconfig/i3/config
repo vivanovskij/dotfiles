@@ -101,11 +101,12 @@ bindsym $mod+q kill
 # Плавающие окна
 
 # Размер плавающего окна
-floating_minimum_size 75 x 50
-floating_maximum_size 800 x 600
+#floating_minimum_size 75 x 50
+#floating_maximum_size 800 x 600
 
 # Размещение плавающего окна
 #for_window [floating] move position center
+
 # ================= lock screen =================
 # keybinding to lock screen
 bindsym Control+$mod+l exec "i3lock -c 000000"

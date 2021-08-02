@@ -8,11 +8,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'easymotion/vim-easymotion'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'vifm/vifm.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
+Plug 'dense-analysis/ale', {'for': 'python'}
+Plug 'majutsushi/tagbar', {'for': 'python'}
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 
@@ -21,6 +24,17 @@ call plug#end()
 " Settings
 "=====================================================================
 
+"---------------------------------------------------------------------
+" Variables
+"
+"определить runtimepath ($HOME/.vim)
+let $RTP=split(&runtimepath, ',')[0]
+let $RC="$HOME/.vim/vimrc"
+
+" устанавливаем path для поиска файлов в проекте
+set path=.,**
+
+"---------------------------------------------------------------------
 syntax on
 
 "Поддержка мыши
@@ -42,6 +56,7 @@ set keymap=russian-jcukenwin
 set iminsert=0
 
 "---------------------------------------------------------------------
+" Нумерация строк
 set number
 set relativenumber
 
@@ -73,7 +88,7 @@ set ignorecase
 
 "---------------------------------------------------------------------
 " Удобное поведение backspace
-set backspace=indent,eol,start whichwrap+=<,>,[,]
+set backspace=indent,eol,start
 
 "---------------------------------------------------------------------
 " Вырубаем .swp и ~ (резервные) файлы
@@ -106,8 +121,7 @@ set ttimeoutlen=10
 set history=200
 
 "---------------------------------------------------------------------
-" Подсвечиваем все что можно подсвечивать
-let python_highlight_all = 1
+" Python
 
 set omnifunc=pythoncomplete#CompletePython
 
@@ -121,10 +135,23 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 "mappings
 "=====================================================================
 
+" Буффер
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprev<CR>
+
+"---------------------------------------------------------------------
+" Netrw
+nnoremap <Leader>e :Ex<CR>
+
+"---------------------------------------------------------------------
 "Переключение раскладки с помоьщью <C-l>
 imap <C-l> <C-^>
 "Для командного режима
 cmap <silent> <C-l> <C-^>
+"---------------------------------------------------------------------
+
+" %% - в командном режиме подставить путь к файлу
+cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/':'%%'
 "---------------------------------------------------------------------
 "Перемещение курсора в режиме insert
 "На символ вправо
@@ -138,18 +165,10 @@ inoremap <C-d> <Delete>
 
 "---------------------------------------------------------------------
 "для работы с буфером обмена
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
-"---------------------------------------------------------------------
-"переназначение перемещения между фактической и экранной строкой
-" nnoremap 0 g0
-" nnoremap g0 0
-" nnoremap ^ g^
-" nnoremap g^ ^
-" nnoremap $ g$
-" nnoremap g$ $
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
 
 "---------------------------------------------------------------------
 "Изменение <Leader> с \ на ,
@@ -173,8 +192,8 @@ nnoremap <Space>c <C-w>c
 
 "---------------------------------------------------------------------
 " Перемещение
-" inoremap <C-j> <Down>
-" inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 
 
 "=====================================================================
@@ -234,6 +253,23 @@ let g:lightline = {
 let g:lightline.tabline = {
     \ 'left': [ [ 'tabs' ] ],
     \ 'right': [ [] ]}
+
+"---------------------------------------------------------------------
+" Tagbar
+
+" toggle tagbar display
+map <F4> :TagbarToggle<CR>
+" autofocus on tagbar open
+let g:tagbar_autofocus = 1
+
+"---------------------------------------------------------------------
+" Ale
+" nnoremap <Leader>n <Plug>(ale_next_wrap)
+" nnoremap <Leader>p <Plug>(ale_previous_wrap)
+"---------------------------------------------------------------------
+" Buftabline
+let g:buftabline_show=1
+let g:buftabline_numbers=1
 
 "=====================================================================
 " Other
