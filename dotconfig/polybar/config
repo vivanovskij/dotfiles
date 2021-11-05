@@ -48,7 +48,7 @@ font-2 = siji:pixelsize=10;1
 #------------------------------------------------------
 # Расположение и активация модулей
 #------------------------------------------------------
-modules-left = i3 menu updates-pacman-aurhelper
+modules-left = i3 menu #updates-pacman-aurhelper
 modules-center = title
 modules-right = cpu temperature_core2 temperature_core3 memory filesystem pulseaudio date
 
@@ -166,7 +166,7 @@ wm-restack = i3
 type = internal/xwindow
 label = %{colors.foreground}%title:0:50:...%
 
-#------------------------------------------------------
+#-----------------------------------------------------
 # Модуль загрузки процессора 
 [module/cpu]
 type = internal/cpu

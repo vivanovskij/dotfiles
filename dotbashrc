@@ -27,18 +27,17 @@ alias l.='ls -d .* --color=auto' # Вывод каталогов, начинаю
 # Aliases
 # ----------------------------------
 
-alias sc='sudo systemctl'
 alias p='sudo pacman'
+alias r='ranger'
+alias v='vifm'
+alias nv='nvim'
+alias sc='sudo systemctl'
 alias psgrep='ps aux | grep'
 alias prename='perl-rename' # Утилита для переименования нескольких файлов
-alias v='vifm'
-alias sv='sudo vifm'
 alias mkd='mkdir -pv'
+alias alacritty='LIBGL_ALWAYS_SOFTWARE=1 alacritty'
 
 # Internet
 # ----------------------------------
 alias yt='youtube-dl --add-metadata -ic'  # Download video link
 alias yta='youtube-dl --add-metadata -xic'  # Download only audio
-
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

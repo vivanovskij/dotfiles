@@ -6,12 +6,27 @@ URxvt.scrollBar: false
 !-------------------------------
 ! Настройка шрифта
 !-------------------------------
-URxvt.font: xft:monaco:size=12
+
+URxvt*font: xft:hack:regular:size=11
 URxvt.boldFont:
 URxvt.letterSpace: -1
-URxvt.perl-ext-common:  ...,resize-font,...
+URxvt.lineSpace: 0
+
+!! Copy Paste & Other Extensions
+URxvt.perl-ext-common: default,clipboard,url-select,resize-font,
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
+URxvt.resize-font.step: 1
+
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+
 ! Цвет шрифта
 URxvt*foreground: white
 ! Background color
@@ -26,4 +41,3 @@ URxvt.pointerBlankDelay: 1
 !-------------------------------
 ! Мигание текстового курсора
 URxvt.cursorBlink: false
-

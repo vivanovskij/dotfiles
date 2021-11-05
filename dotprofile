@@ -5,9 +5,9 @@
 
 # Переменные окружения
 # ----------------------------------
-export PATH="$PATH:$HOME/.scripts"
-export TERMCMD="urxvt"
-export EDITOR="vim"
+export PATH="$PATH:$HOME/.scripts:$HOME/.local/bin"
+export TERMCMD="alacritty"
+export EDITOR="nvim"
 export READER="evince"
 # Игнорировать дубликаты в истории команд
 export HISTCONTROL=ignoredups
@@ -16,6 +16,8 @@ export HISTSIZE=1000
 # Разрешение экрана
 export WIDTH=1280
 export HEIGHT=800
+# Переменная для alacritty
+export LIBGL_ALWAYS_SOFTWARE=1
 
 [ -f ~/.bashrc  ] && source ~/.bashrc
 

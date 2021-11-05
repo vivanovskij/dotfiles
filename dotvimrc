@@ -3,18 +3,15 @@ call plug#begin('~/.vim/plugged')
 
 " Темы
 Plug 'morhetz/gruvbox'
-
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'easymotion/vim-easymotion'
 Plug 'mattn/emmet-vim', {'for': 'html'}
-Plug 'vifm/vifm.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
-Plug 'dense-analysis/ale', {'for': 'python'}
-Plug 'majutsushi/tagbar', {'for': 'python'}
+" Plug 'majutsushi/tagbar', {'for': 'python'}
 Plug 'ap/vim-buftabline'
 
 call plug#end()
@@ -76,7 +73,7 @@ set formatoptions-=cro
 "---------------------------------------------------------------------
 " Переносим на другую строчку, разрываем строки
 set wrap
-set linebreak
+" set linebreak
 
 "---------------------------------------------------------------------
 " Не подсвечивать результаты поиска
@@ -120,17 +117,6 @@ set ttimeoutlen=10
 " Увеличить кол-во последних запоминаемых команд
 set history=200
 
-"---------------------------------------------------------------------
-" Python
-
-set omnifunc=pythoncomplete#CompletePython
-
-" Перед сохранением вырезаем пробелы на концах (только в .py файлах)
-autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-" В .py файлах включаем умные отступы после ключевых слов
-autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
-
 "=====================================================================
 "mappings
 "=====================================================================
@@ -141,7 +127,7 @@ nnoremap <C-p> :bprev<CR>
 
 "---------------------------------------------------------------------
 " Netrw
-nnoremap <Leader>e :Ex<CR>
+nnoremap <C-e> :Ex<CR>
 
 "---------------------------------------------------------------------
 "Переключение раскладки с помоьщью <C-l>
@@ -221,14 +207,6 @@ map <Leader> <Plug>(easymotion-prefix)
 map <Leader>a <Plug>(easymotion-F)
 
 "---------------------------------------------------------------------
-" Vifm
-map <Leader>vv :Vifm<CR>
-map <Leader>vs :VsplitVifm<CR>
-map <Leader>vh :SplitVifm<CR>
-map <Leader>vt :TabVifm<CR>
-map <Leader>vd :DiffVifm<CR>
-
-"---------------------------------------------------------------------
 " Lightline
 set laststatus=2
 set noshowmode
@@ -258,14 +236,10 @@ let g:lightline.tabline = {
 " Tagbar
 
 " toggle tagbar display
-map <F4> :TagbarToggle<CR>
+" map <F4> :TagbarToggle<CR>
 " autofocus on tagbar open
-let g:tagbar_autofocus = 1
+" let g:tagbar_autofocus = 1
 
-"---------------------------------------------------------------------
-" Ale
-" nnoremap <Leader>n <Plug>(ale_next_wrap)
-" nnoremap <Leader>p <Plug>(ale_previous_wrap)
 "---------------------------------------------------------------------
 " Buftabline
 let g:buftabline_show=1

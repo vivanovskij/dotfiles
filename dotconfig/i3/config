@@ -37,6 +37,7 @@ exec --no-startup-id autokey-gtk
 
 #Browser
 exec --no-startup-id chromium
+# exec --no-startup-id qutebrowser
 
 # Файловый менеджер
 #exec --no-startup-id i3-msg 'workspace 10; exec i3-sensible-terminal -hold -e "ranger" &'
@@ -45,7 +46,9 @@ exec --no-startup-id chromium
 # ============= Запуск программ =================
 
 bindsym $mod+F1 exec --no-startup-id chromium
-bindsym $mod+F4 exec --no-startup-id vlc
+bindsym $mod+F2 exec --no-startup-id qutebrowser
+bindsym $mod+F3 exec --no-startup-id vieb
+bindsym $mod+F4 exec --no-startup-id telegram-desktop
 
 bindsym $mod+F5 exec --no-startup-id mousepad
 bindsym $mod+F6 exec --no-startup-id libreoffice
@@ -55,7 +58,8 @@ bindsym $mod+F9 exec --no-startup-id thunar
 bindsym $mod+F10 exec --no-startup-id i3-sensible-terminal -hold -e 'ranger' &
 
 bindsym XF86Calculator exec --no-startup-id galculator
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+# bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Return exec --no-startup-id alacritty
 
 
 # ======== Specific workspaces ================
@@ -76,6 +80,7 @@ focus_on_window_activation focus
 
 for_window [title="galculator$"] floating enable
 for_window [class="(?i)urxvt"] floating enable
+for_window [class="(?i)alacritty"] floating enable
 
 # ============= i3-gaps ================
 # Если окно одно, то рамки не надо
@@ -102,7 +107,7 @@ bindsym $mod+q kill
 
 # Размер плавающего окна
 #floating_minimum_size 75 x 50
-#floating_maximum_size 800 x 600
+floating_maximum_size 800 x 600
 
 # Размещение плавающего окна
 #for_window [floating] move position center
